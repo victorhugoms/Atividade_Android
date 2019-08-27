@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewMenor;
     private TextView textViewvisualMedio;
     private TextView textViewvisualMenor;
-    private TextView textViewvisualMaior;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +34,11 @@ public class MainActivity extends AppCompatActivity {
         textViewMaior = findViewById(R.id.text_View_Maior);
         textViewmedia = findViewById(R.id.text_View_media);
         textViewMenor = findViewById(R.id.text_View_menor);
-        textViewvisualMaior = findViewById(R.id.text_View_visual_maior);
         textViewvisualMedio = findViewById(R.id.text_View_visual_media);
         textViewvisualMenor = findViewById(R.id.text_View_visual_menor);
+        imageView = findViewById(R.id.image_view_resultado);
+
+        imageView.setVisibility(View.INVISIBLE);
 
 
     }
@@ -53,19 +56,19 @@ public class MainActivity extends AppCompatActivity {
 
         textViewmedia.setText(media.toString());
 
-        if (nota1 > nota2 && nota1 > nota3) {
+        if (nota1 >= nota2 && nota1 >= nota3) {
             textViewMaior.setText(nota1.toString());
-        } else if (nota2 > nota1 && nota2 > nota3) {
+        } else if (nota2 >= nota1 && nota2 >= nota3) {
             textViewMaior.setText(nota2.toString());
-        } else if (nota3 > nota1 && nota3 > nota2) {
+        } else if (nota3 >= nota1 && nota3 >= nota2) {
             textViewMaior.setText(nota3.toString());
         }
 
-        if (nota1 < nota2 && nota1 < nota3) {
+        if (nota1 <= nota2 && nota1 <= nota3) {
             textViewMenor.setText(nota1.toString());
-        } else if (nota2 < nota1 && nota2 < nota3) {
+        } else if (nota2 <= nota1 && nota2 <= nota3) {
             textViewMenor.setText(nota2.toString());
-        } else if (nota3 < nota1 && nota3 < nota2) {
+        } else if (nota3 <= nota1 && nota3 <= nota2) {
             textViewMenor.setText(nota3.toString());
         }
         if (media < 5) {
@@ -73,11 +76,16 @@ public class MainActivity extends AppCompatActivity {
                     .getColor(R.color.baixa));
             textViewvisualMedio.setTextColor(getResources()
                     .getColor(R.color.baixa));
+            imageView.setImageResource(R.drawable.reprovado);
+            imageView.setVisibility(View.VISIBLE);
+
         } else if (media > 5) {
             textViewmedia.setTextColor(getResources()
                     .getColor(R.color.alta));
             textViewvisualMedio.setTextColor(getResources()
                     .getColor(R.color.alta));
+            imageView.setImageResource(R.drawable.aprovado);
+            imageView.setVisibility(View.VISIBLE);
         }
 
     }
