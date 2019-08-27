@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Media</string>
+    <string name="menu">Media Do Aluno</string>
+    <string name="nota">Insira Nota</string>
+    <string name="btn">Calcular</string>
+    <string name="media">Media</string>
+    <string name="Maior">Maior</string>
+    <string name="Menor">Menor</string>
+</resources>
